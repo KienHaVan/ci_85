@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProductItem = ({ index = 1, setCount, name, price, discount }) => {
+const ProductItem = ({ index = 1, onClick, name, price, discount }) => {
   return (
     <div className="py-2 px-4 border border-gray-400 rounded-md inline-flex flex-col gap-2">
       <div className="w-[200px] h-[200px]">
@@ -20,10 +20,7 @@ const ProductItem = ({ index = 1, setCount, name, price, discount }) => {
         <h3 className="text-2xl font-bold">{price}$</h3>
         <h3 className="text-red-500 ">{discount}% off</h3>
       </div>
-      <button
-        className="py-2 bg-green-400 rounded-md"
-        onClick={() => setCount((prev) => prev + 1)}
-      >
+      <button className="py-2 bg-green-400 rounded-md" onClick={onClick}>
         <p className="text-white">Add to cart</p>
       </button>
     </div>

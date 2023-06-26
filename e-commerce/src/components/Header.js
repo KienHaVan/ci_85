@@ -16,7 +16,9 @@ const Header = ({ count }) => {
       <div className="flex flex-row justify-center gap-8">
         <div className="flex flex-row items-center gap">
           <BiCart size={32} />
-          <h4 className="text-xl font-semibold text-red-400">({count})</h4>
+          <h4 className="text-xl font-semibold text-red-400">
+            ({count.length})
+          </h4>
         </div>
         <BiUser size={32} />
       </div>

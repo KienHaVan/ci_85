@@ -28,12 +28,12 @@ const productList = [
 ];
 
 const App = () => {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState([]);
   console.log('🚀 ~ file: App.js:32 ~ App ~ count:', count);
   return (
     <div className="w-[1280px] mx-auto ">
       <Header count={count} />
-      <HomeBody productList={productList} setCount={setCount} />
+      <HomeBody productList={productList} setCount={setCount} count={count} />
       <Cart />
     </div>
   );

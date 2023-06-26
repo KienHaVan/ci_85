@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import ProductItem from './ProductItem';
 
-const HomeBody = ({ productList, setCount }) => {
+const HomeBody = ({ productList, setCount, count }) => {
+  const handleAddToCart = (item) => {
+    // setCount((prev) => [...prev, item]);
+    // console.log(item);
+    setCount([...count, item]);
+  };
   return (
     <div className="flex flex-row items-center gap-4 flex-wrap">
       {/* <button onClick={plus}>plus</button> */}
@@ -10,7 +15,7 @@ const HomeBody = ({ productList, setCount }) => {
         return (
           <ProductItem
             index={productItem.id}
-            setCount={setCount}
+            onClick={() => handleAddToCart(productItem)}
             name={productItem.name}
             price={productItem.price}
             discount={productItem.discount}
