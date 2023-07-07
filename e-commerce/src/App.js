@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import HomeBody from './components/HomeBody';
 import Cart from './components/Cart';
@@ -28,13 +28,47 @@ const productList = [
 ];
 
 const App = () => {
-  const [count, setCount] = useState([]);
+  const [count, setCount] = useState(0);
+  const [first, setFirst] = useState([]);
   console.log('🚀 ~ file: App.js:32 ~ App ~ count:', count);
+  // useEffect(() => {
+  //   console.log('first');
+  // });
+  useEffect(() => {
+    // fetch('https://jsonplaceholder.typicode.com/users')
+    //   .then((res) => {
+    //     return res.json();
+    //   })
+    //   .then((res) => console.log(res))
+    //   .catch(() => console.log('first'));
+    async function logJSONData() {
+      try {
+        const response = await fetch(
+          'https://jsonplacehoggighihulder.typicode.com/users'
+        );
+        const jsonData = await response.json();
+        console.log(jsonData);
+      } catch (error) {
+        console.log('first');
+      }
+    }
+    logJSONData();
+  }, []);
+  // useEffect(() => {
+  //   console.log('first');
+  // }, [first]);
+
   return (
     <div className="w-[1280px] mx-auto ">
-      <Header count={count} />
+      {/* <Header count={count} />
       <HomeBody productList={productList} setCount={setCount} count={count} />
-      <Cart />
+      <Cart /> */}
+      <button
+        onClick={() => setCount(count + 1)}
+        className="px-4 px-2 bg-red-400"
+      >
+        <text>Click</text>
+      </button>
     </div>
   );
 };
