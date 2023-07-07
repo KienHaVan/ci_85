@@ -29,7 +29,6 @@ const productList = [
 
 const App = () => {
   const [count, setCount] = useState(0);
-  const [first, setFirst] = useState([]);
   console.log('🚀 ~ file: App.js:32 ~ App ~ count:', count);
   // useEffect(() => {
   //   console.log('first');
