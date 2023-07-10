@@ -86,7 +86,9 @@ const App = () => {
             />
             <Route path="/cart" element={<Cart />} />
             <Route path="/product-detail" element={<ProductDetail />} />
+            <Route path="/products/:productId" element={<ProductDetail />} />
           </Route>
+          <Route path="*" element={<h1>Page not found</h1>} />
         </Routes>
       </BrowserRouter>
     </div>
