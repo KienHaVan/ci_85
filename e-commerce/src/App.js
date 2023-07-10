@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import HomeBody from './components/HomeBody';
 import Cart from './components/Cart';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import ProductDetail from './components/ProductDetail';
+import Layout from './components/Layout';
 
 // ["abc", "xyz",...]
 const productList = [
@@ -62,12 +65,30 @@ const App = () => {
       {/* <Header count={count} />
       <HomeBody productList={productList} setCount={setCount} count={count} />
       <Cart /> */}
-      <button
+      {/* <button
         onClick={() => setCount(count + 1)}
         className="px-4 px-2 bg-red-400"
       >
         <text>Click</text>
-      </button>
+      </button> */}
+      <BrowserRouter>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route
+              path="/"
+              element={
+                <HomeBody
+                  productList={productList}
+                  setCount={setCount}
+                  count={count}
+                />
+              }
+            />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/product-detail" element={<ProductDetail />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };
