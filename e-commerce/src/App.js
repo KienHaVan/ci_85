@@ -32,7 +32,9 @@ const productList = [
 const App = () => {
   const [count, setCount] = useState(0);
   const [user, setUser] = useState([]);
+  const [loading, setLoading] = useState(false);
   console.log('🚀 ~ file: App.js:35 ~ App ~ user:', user);
+
   // console.log('🚀 ~ file: App.js:32 ~ App ~ count:', count);
   // useEffect(() => {
   //   console.log('first');
@@ -71,6 +73,7 @@ const App = () => {
   };
 
   const addUser = async () => {
+    setLoading(true);
     const rawResponse = await fetch(
       'https://6375d83e7e93bcb006bb4758.mockapi.io/userData',
       {
@@ -84,6 +87,7 @@ const App = () => {
     );
     const content = await rawResponse.json();
     console.log('🚀 ~ file: App.js:76 ~ addUser ~ content:', content);
+    setLoading(false);
   };
 
   const updateUser = async () => {
@@ -160,9 +164,11 @@ const App = () => {
       <button
         onClick={getUser}
         className="px-4 py-2 border border-red-400 rounded-lg"
+        disabled={loading}
       >
-        Get User
+        {loading ? 'Loading...' : 'Get User'}
       </button>
+      {loading && <h2>Loading...</h2>}
       <button
         onClick={addUser}
         className="px-4 py-2 border border-red-400 rounded-lg"
