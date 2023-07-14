@@ -20,6 +20,7 @@ const HomeBody = ({ productList, setCount, count }) => {
         {productList.map((productItem) => {
           return (
             <ProductItem
+              key={productItem.id}
               index={productItem.id}
               onClick={() => handleAddToCart(productItem)}
               name={productItem.name}
